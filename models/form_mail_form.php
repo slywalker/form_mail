@@ -4,7 +4,7 @@ class FormMailForm extends FormMailAppModel {
 	public $validate = array(
 		'title' => array(
 			array(
-				'rule' => VALID_NOT_EMPTY,
+				'rule' => array('notEmpty'),
 				'message' => 'タイトルを入力してください',
 			),
 		),
@@ -14,7 +14,7 @@ class FormMailForm extends FormMailAppModel {
 				'message' => 'メールアドレスの形式を確認してください',
 			),
 			array(
-				'rule' => VALID_NOT_EMPTY,
+				'rule' => array('notEmpty'),
 				'message' => 'メールアドレスを入力してください',
 			),
 		),

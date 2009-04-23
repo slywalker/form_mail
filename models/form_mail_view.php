@@ -64,7 +64,7 @@ class FormMailView	extends FormMailAppModel {
 		}
 		switch ($rule) {
 			case 'required':
-				$validate['rule'] = VALID_NOT_EMPTY;
+				$validate['rule'] = array('notEmpty');
 				$validate['message'] = '必須項目です';
 				break;
 			case 'checked':

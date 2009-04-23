@@ -4,7 +4,7 @@ class FormMailElement extends FormMailAppModel {
 
 	public $validate = array(
 		'label' => array(
-			'rule' => VALID_NOT_EMPTY,
+			'rule' => array('notEmpty'),
 			'message' => 'ラベルを入力してください',
 		),
 	);
