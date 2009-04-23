@@ -43,7 +43,11 @@ class FormMailViewsController extends FormMailAppController {
 				$label = $this->FormMailForm->FormMailElement->field(
 					'label', array('id' => $id));
 				if ($name[0] === 'checkbox') {
-					$value = ($value) ? 'チェックあり': 'チェックなし';
+					if (is_array($value)) {
+						$value = implode(', ', $value);
+					} else {
+						$value = ($value) ? 'チェックあり': 'チェックなし';
+					}
 				}
 				$body[] = array('label' => $label, 'data' => $value);
 			}
@@ -53,6 +57,7 @@ class FormMailViewsController extends FormMailAppController {
 		$this->view = 'View';
 		//$this->MyQdmail->debug(2);
 		$this->MyQdmail->to($sendTo);
+		$this->MyQdmail->from($sendTo);
 		$this->MyQdmail->subject($title);
 		$this->MyQdmail->template('mail');
 		return $this->MyQdmail->send();

@@ -132,6 +132,12 @@ class FormMailView	extends FormMailAppModel {
 				$options['legend'] = h($element['label']);
 				break;
 			case 'checkbox':
+				if ($element['options']) {
+					$opt = explode(',', $element['options']);
+					$options['options'] = array_combine($opt, $opt);
+					$options['multiple'] = 'checkbox';
+					$options['type'] = 'select';
+				}
 				break;
 		}
 		return $options;
