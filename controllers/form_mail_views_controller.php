@@ -17,9 +17,7 @@ class FormMailViewsController extends FormMailAppController {
 					$formMailForm['FormMailForm']['email'],
 					$formMailForm['FormMailForm']['title']
 				)) {
-					$this->Session->setFlash('送信しました');
-					$this->render('send');
-					return;
+					$this->flash('送信しました', array('action' => 'edit'));
 				} else {
 					$this->Session->setFlash('送信できませんでした');
 				}
@@ -27,7 +25,8 @@ class FormMailViewsController extends FormMailAppController {
 				$this->Session->setFlash('送信できませんでした メッセージを確認してください');
 			}
 		} else {
-			$this->data['FormMailView']['id'] = $formMailForm['FormMailForm']['id'];
+			$this->data['FormMailView']['id']
+				= $formMailForm['FormMailForm']['id'];
 		}
 	}
 
